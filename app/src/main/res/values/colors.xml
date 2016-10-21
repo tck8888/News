@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="button">#FF4081</color>
+    <color name="buttonPressed">#e72061</color>
+
+    <color name="guide_string_color">#fff</color>
+    <color name="splash_btn_bg_color_pressed">#00A1DB</color>
+    <color name="splash_btn_bg_color_normal">#00ACFF</color>
 </resources>

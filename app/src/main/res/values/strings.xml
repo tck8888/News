@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">News</string>
+    <string name="guide_string">用力戳这里</string>
 </resources>

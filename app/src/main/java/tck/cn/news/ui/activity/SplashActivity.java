@@ -5,10 +5,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Bundle;
 import android.widget.Button;
-
 import com.jaeger.library.StatusBarUtil;
+
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -16,6 +15,7 @@ import tck.cn.news.R;
 import tck.cn.news.base.BaseActivity;
 import tck.cn.news.util.SpUtil;
 import tck.cn.news.widget.MyVideoView;
+
 
 public class SplashActivity extends BaseActivity {
 
@@ -25,25 +25,35 @@ public class SplashActivity extends BaseActivity {
     @BindView(R.id.play)
     Button mPlay;
 
+
     @Override
     protected void iniData() {
         mVideoview.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.kr36));
         //当视频播放完毕，继续播放
-        mVideoview.setOnCompletionListener(mp -> {
-            mVideoview.start();
+        mVideoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mVideoview.start();
+            }
         });
+        mVideoview.start();
 
     }
 
     @Override
     protected void initView() {
         StatusBarUtil.setColor(this, Color.GRAY);
+
+
+
     }
+
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_splash;
     }
+
 
     @OnClick(R.id.play)
     public void onClick() {
@@ -60,6 +70,7 @@ public class SplashActivity extends BaseActivity {
         if (mVideoview != null && mVideoview.isPlaying()) {
             mVideoview.stopPlayback();
         }
+
         finish();
     }
 }
