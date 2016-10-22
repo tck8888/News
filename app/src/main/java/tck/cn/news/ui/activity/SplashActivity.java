@@ -30,12 +30,7 @@ public class SplashActivity extends BaseActivity {
     protected void iniData() {
         mVideoview.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.kr36));
         //当视频播放完毕，继续播放
-        mVideoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                mVideoview.start();
-            }
-        });
+        mVideoview.setOnCompletionListener(mp -> mVideoview.start());
         mVideoview.start();
 
     }

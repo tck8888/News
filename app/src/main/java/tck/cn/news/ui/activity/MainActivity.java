@@ -5,6 +5,7 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import tck.cn.news.R;
 import tck.cn.news.base.BaseActivity;
+import tck.cn.news.ui.fragment.HomeFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -24,6 +25,8 @@ public class MainActivity extends BaseActivity {
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         // 设置触摸屏幕的模式
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+
+        //设置侧滑阴影和宽度
         menu.setShadowWidthRes(R.dimen.shadow_width);
         menu.setShadowDrawable(R.drawable.shadow);
 
@@ -35,6 +38,9 @@ public class MainActivity extends BaseActivity {
 
         //为侧滑菜单设置布局
         menu.setMenu(R.layout.leftmenu);
+
+        HomeFragment homeFragment = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_main, homeFragment).commit();
     }
 
     @Override
