@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="tck.cn.news">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -18,7 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!--     "-->
         <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:name=".ui.activity.MainActivity"
             android:screenOrientation="portrait">
         </activity>

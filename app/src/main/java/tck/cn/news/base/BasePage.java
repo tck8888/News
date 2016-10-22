@@ -21,6 +21,7 @@ public abstract class BasePage {
     }
 
     protected abstract View initView();
+    public abstract void initData();
 
     public View getRootView() {
         return mView;

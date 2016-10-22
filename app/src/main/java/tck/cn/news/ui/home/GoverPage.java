@@ -26,4 +26,9 @@ public class GoverPage extends BasePage {
         textView.setText(R.string.tab_gov_affairs);
         return textView;
     }
+
+    @Override
+    public void initData() {
+
+    }
 }

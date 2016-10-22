@@ -28,14 +28,19 @@ public class SettingPage extends BasePage {
     protected View initView() {
 
         ListView lv = new ListView(mContext);
-        List<String> strings = initData();
+        List<String> strings = initData1();
         ArrayAdapter adpater = new ArrayAdapter(mContext, android.R.layout.test_list_item, strings);
         lv.setAdapter(adpater);
 
         return lv;
     }
 
-    private List<String> initData() {
+    @Override
+    public void initData() {
+
+    }
+
+    private List<String> initData1() {
         List<String> strings = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             strings.add(i + "");

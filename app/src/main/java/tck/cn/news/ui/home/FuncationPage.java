@@ -26,4 +26,9 @@ public class FuncationPage extends BasePage {
         textView.setText(R.string.tab_function);
         return textView;
     }
+
+    @Override
+    public void initData() {
+
+    }
 }

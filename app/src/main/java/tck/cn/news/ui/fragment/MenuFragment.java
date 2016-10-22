@@ -1,13 +1,15 @@
 package tck.cn.news.ui.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 import tck.cn.news.R;
+import tck.cn.news.base.BaseFragment;
+import tck.cn.news.ui.adapter.MenuAdapter;
 
 /**
  * Description :
@@ -15,16 +17,45 @@ import tck.cn.news.R;
  * Created by tck on 2016/10/22.
  */
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends BaseFragment {
 
-    @Nullable
+    @BindView(R.id.tv_menu_classify)
+    TextView mTvMenuClassify;
+    @BindView(R.id.lv_menu_news_center)
+    ListView mLvMenuNewsCenter;
+    @BindView(R.id.lv_menu_smart_service)
+    ListView mLvMenuSmartService;
+    @BindView(R.id.lv_menu_govaffairs)
+    ListView mLvMenuGovaffairs;
+
+    private List<String> newsTitles = new ArrayList<>();
+    private MenuAdapter mNewsAdapter;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_menu, container, false);
+    protected int getLayoutId() {
+        return R.layout.layout_left_menu;
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+    }
+
+    public void initNewsCenterMenu(List<String> newsCenterMenuTitles) {
+        newsTitles.clear();
+        newsTitles.addAll(newsCenterMenuTitles);
+
+        //得到界面中新闻中心的listview并设置适配器即可
+
+        if (mNewsAdapter==null){
+            mNewsAdapter = new MenuAdapter(mContext,newsTitles);
+            mLvMenuNewsCenter.setAdapter(mNewsAdapter);
+        } else {
+            mNewsAdapter.notifyDataSetChanged();
+        }
     }
 }

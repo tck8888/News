@@ -25,4 +25,9 @@ public class SmartServicePage extends BasePage {
         textView.setText(R.string.tab_smart_service);
         return textView;
     }
+
+    @Override
+    public void initData() {
+
+    }
 }
