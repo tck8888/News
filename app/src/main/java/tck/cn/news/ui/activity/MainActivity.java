@@ -48,7 +48,7 @@ public class MainActivity extends SlidingFragmentActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_menu, mMenuFragment).commit();
         //.将内容界面进行展示
         HomeFragment homeFragement = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_main, homeFragement).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_main, homeFragement, "HOME").commit();
     }
 
     //控制内容界面进行界面切换
@@ -60,4 +60,10 @@ public class MainActivity extends SlidingFragmentActivity {
     public MenuFragment getMenuFragment() {
         return mMenuFragment;
     }
+
+    public HomeFragment getHomeFragment() {
+
+        return (HomeFragment) getSupportFragmentManager().findFragmentByTag("HOME");
+    }
+
 }

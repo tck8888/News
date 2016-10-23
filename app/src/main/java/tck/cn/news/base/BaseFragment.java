@@ -7,10 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import tck.cn.news.ui.activity.MainActivity;
+import tck.cn.news.ui.fragment.MenuFragment;
 
 /**
  * Description :
@@ -22,6 +25,8 @@ public abstract class BaseFragment extends RxFragment {
 
     protected Context mContext;
     private Unbinder mUnbinder;
+    public SlidingMenu slidingMenu;
+    public MenuFragment mMenuFragment;
 
     protected abstract int getLayoutId();
 
@@ -41,6 +46,9 @@ public abstract class BaseFragment extends RxFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
+        slidingMenu = ((MainActivity) mContext).getSlidingMenu();
+        mMenuFragment = ((MainActivity) mContext).getMenuFragment();
+
         initView();
     }
 

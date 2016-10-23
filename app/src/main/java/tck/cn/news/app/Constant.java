@@ -8,7 +8,7 @@ package tck.cn.news.app;
 
 public class Constant {
 
-    public static final String BASE_ERL = "http://v.juhe.cn/";
+    //public static final String BASE_ERL = "http://v.juhe.cn/";
 
     public static final String KEY = "1982e48d495bb67a733e3ddef6b3be83";
 

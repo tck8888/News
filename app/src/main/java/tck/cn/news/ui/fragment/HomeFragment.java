@@ -1,10 +1,6 @@
 package tck.cn.news.ui.fragment;
 
-import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -76,7 +72,6 @@ public class HomeFragment extends BaseFragment implements LazyViewPager.OnPageCh
 
         mMainRadio.setOnCheckedChangeListener((group, checkedId) -> {
 
-            SlidingMenu slidingMenu = ((MainActivity) mContext).getSlidingMenu();
             switch (checkedId) {
                 case R.id.rb_function:
                     mViewPager.setCurrentItem(0, false);
@@ -85,15 +80,17 @@ public class HomeFragment extends BaseFragment implements LazyViewPager.OnPageCh
                 case R.id.rb_news_center:
                     mViewPager.setCurrentItem(1, false);
                     slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-
+                    mMenuFragment.setMenuType(MenuFragment.NEWSCENTER);
                     break;
                 case R.id.rb_smart_service:
                     mViewPager.setCurrentItem(2, false);
                     slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+                    mMenuFragment.setMenuType(MenuFragment.SMARTSERVICE);
                     break;
                 case R.id.rb_gov_affairs:
                     mViewPager.setCurrentItem(3, false);
                     slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+                    mMenuFragment.setMenuType(MenuFragment.GOVAFFAIRS);
                     break;
                 case R.id.rb_setting:
                     mViewPager.setCurrentItem(4, false);
@@ -121,10 +118,19 @@ public class HomeFragment extends BaseFragment implements LazyViewPager.OnPageCh
     public void onPageSelected(int position) {
         BasePage basePage = mHomePages.get(position);
         basePage.initData();
+        if (!basePage.isLoad) {
+
+            basePage.initData();
+        }
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    public NewsCenterPage getNewsCenterPage() {
+        NewsCenterPage newsCenterPage = (NewsCenterPage) mHomePages.get(1);
+        return newsCenterPage;
     }
 }

@@ -26,4 +26,14 @@ public class SpUtil {
     private static SharedPreferences getSharedPreferences() {
         return App.getInstance().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
     }
+
+    public static void saveString(String key, String value) {
+        SharedPreferences sharedPreferences = getSharedPreferences();
+        sharedPreferences.edit().putString(key, value).commit();
+    }
+
+    public static String getString(String key, String deValue) {
+        return getSharedPreferences().getString(SP_NAME, deValue);
+    }
+
 }
